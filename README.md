@@ -513,7 +513,3 @@ Responsibilities
 - Show Details if Matched
 
 ---
-
-# Interview Explanation (2 Minutes)
-
-"This project is a Flutter-based Employee Registry application that uses facial biometrics for employee authentication. During registration, Google ML Kit detects the face, MobileFaceNet generates a 192-dimensional face embedding, and both employee details and embeddings are stored locally using Hive. During verification, a new face embedding is generated from the live camera image and compared with the stored embedding using Euclidean Distance. If the distance is below the predefined threshold, the employee is authenticated and their details are displayed; otherwise, access is denied. Since the entire process runs on-device using TensorFlow Lite and Hive, the application works completely offline."
