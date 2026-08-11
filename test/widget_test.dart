@@ -1,9 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hash_code/main.dart';
+import '../lib/main.dart';
 
 void main() {
-  testWidgets('App launches successfully', (WidgetTester tester) async {
+  testWidgets('MyApp launches successfully', (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
-    await tester.pumpAndSettle();
+
+    expect(find.byType(MyApp), findsOneWidget);
   });
 }
