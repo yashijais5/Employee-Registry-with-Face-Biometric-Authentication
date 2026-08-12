@@ -1,18 +1,30 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../lib/main.dart';
-import '../lib/services/database_service.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  late Directory testDirectory;
+
   setUpAll(() async {
-    await DatabaseService.init();
+    testDirectory =
+    await Directory.systemTemp.createTemp('employee_registry_test');
+
+    Hive.init(testDirectory.path);
+
+    await Hive.openBox('employees');
   });
 
   tearDownAll(() async {
     await Hive.close();
+
+    if (await testDirectory.exists()) {
+      await testDirectory.delete(recursive: true);
+    }
   });
 
   testWidgets('MyApp launches successfully', (WidgetTester tester) async {
