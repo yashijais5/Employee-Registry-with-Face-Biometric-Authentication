@@ -14,7 +14,8 @@ rootProject.layout.buildDirectory.value(newBuildDir)
 subprojects {
     val configureNdk = {
         extensions.findByType<com.android.build.gradle.BaseExtension>()?.apply {
-            ndkVersion = "27.0.12077973"
+            //ndkVersion = "27.0.12077973"
+            ndkVersion = flutter.ndkVersion
         }
     }
     if (state.executed) {
